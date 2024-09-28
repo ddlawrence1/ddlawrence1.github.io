@@ -10,9 +10,9 @@ Q3. To clone my repository to my device I open my GitHub desktop and 'clicked' o
 
 # About Me
   ## My Interests
-* I enjoy playing Video Games such as The Sims, Minecraft, Animal Crossing, and Paila.
-* Music is a form of meditation for me. I use Spotify and Youtube more than any other app on my device.
-* I love to learn about Astrology as well. I enjoy learning the Zodiac signs and about the Planets.
+* I enjoy playing Video Games such as **_The Sims_**, **_Minecraft_**, **_Animal Crossing_**, and **_Paila_**.
+* **_Music_** is a form of meditation for me. I use **_Spotify_** and **_Youtube_** more than any other app on my device.
+* I love to learn about **_Astrology_** as well. I enjoy learning the **_Zodiac signs_** and about the **_Planets_**.
 ## Websites I Recommend
 >[Pinterest](https://pinterest.com) - Pinterest is an important app that I use daily for inspiration and creating mood boards. What I find interesting about the website is that it allows a user to share their post and place it into a board that they've created, while another user could save the first users board as well for inspiration.
 
