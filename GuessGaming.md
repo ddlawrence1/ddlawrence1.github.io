@@ -53,47 +53,26 @@ Output-**_Correct!_** -->End([End])
 
 ## Description of each step of the process.
 ### Part 1: Declare Section
-> Function Main
-
-> Declare Integer SecretNumber
-
-> Declare Integer UserGuess
-
-> Declare Integer MAX
-
+Function Main</br>
+Declare Integer SecretNumber</br>
+Declare Integer UserGuess</br>
+Declare Integer MAX</br>
 
 ### Part 2: Assign/In and Output Section
- > Assign MAX = 8
-
->  Assign SecretNumber = Random(MAX)
-    
-  > Output "Please enter a number between 0 and " & MAX - 1
-  
-   > Input UserGuess
-    
-> While UserGuess <> SecretNumber
-    
- > If UserGuess < SecretNumber
-     
-  > Output "Too Low"
-     
-   > Else
-      
-  > If UserGuess > SecretNumber
-     
-  > Output "Too High"
-      
-   > End
-       
-   > End
-     
- > Output "Please enter a number between 0 and 7"
-     
-  > Input UserGuess
-     
- > End
-    
-> Output "You are Correct!"
-    
-End
-
+Assign MAX = 8 Numbers</br>
+Assign SecretNumber = Random(MAX)</br>
+Output "Please enter a number between 0 and " & MAX - 1</br>
+Input UserGuess</br>
+While UserGuess <> SecretNumber</br>
+If UserGuess < SecretNumber</br>
+Output "Too Low"</br>
+ Else</br>
+ If UserGuess > SecretNumber</br>
+ Output "Too High"</br>
+ Both Output for "Too High" and "Too Low"</br>
+ Appears</br>
+ Output "Please enter a number between 0 and 7"</br>
+ 
+If UserGuess = SecretNumber</br>
+Output "You are Correct!"</br>
+End</br>
