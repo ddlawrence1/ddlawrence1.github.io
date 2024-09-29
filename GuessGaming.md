@@ -1,3 +1,5 @@
+# Guessing Game FlowChart
+
 '''mermaid
 
 flowchart TD
@@ -48,3 +50,50 @@ User-equals-SecretNumber --> Output-**_Correct!_**;
 Output-**_Correct!_** -->End([End])
 
 '''
+
+## Description of each step of the process.
+### Part 1: Declare Section
+> Function Main
+
+> Declare Integer SecretNumber
+
+> Declare Integer UserGuess
+
+> Declare Integer MAX
+
+
+### Part 2: Assign/In and Output Section
+ > Assign MAX = 8
+
+>  Assign SecretNumber = Random(MAX)
+    
+  > Output "Please enter a number between 0 and " & MAX - 1
+  
+   > Input UserGuess
+    
+> While UserGuess <> SecretNumber
+    
+ > If UserGuess < SecretNumber
+     
+  > Output "Too Low"
+     
+   > Else
+      
+  > If UserGuess > SecretNumber
+     
+  > Output "Too High"
+      
+   > End
+       
+   > End
+     
+ > Output "Please enter a number between 0 and 7"
+     
+  > Input UserGuess
+     
+ > End
+    
+> Output "You are Correct!"
+    
+End
+
