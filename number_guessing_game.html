@@ -1,0 +1,48 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css"/>
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+<body>
+    <!-- HTML Structure -->
+    <h1>Guess the Number!</h1>
+    <p>We have selected a random number between 1 and 100. See if you can guess it.</p>
+
+    <input id="guessInput" type="number" placeholder="Enter your guess here..." />
+    <button id="guessButton" onclick="guessNumber()">Guess</button>
+    <p id="result"></p>
+
+    <py-script>
+        from random import randint
+        from pyscript import Element
+
+        # Generate the random number
+        random_number = randint(1, 100)
+        print(f"Random number (for testing): {random_number}")  # For debugging
+
+        # Create the guessing function
+        def guessNumber(event=None):
+            guess_input = Element("guessInput").element.value
+            result_element = Element("result")
+
+            if guess_input:  # Check if input is not empty
+                user_guess = int(guess_input)
+                if user_guess == random_number:
+                    result_element.write(f"Congratulations! You've guessed the correct number. Your doubled guess: {user_guess * 2}")
+                elif user_guess < random_number:
+                    result_element.write(f"Too low, try again. Your doubled guess: {user_guess * 2}")
+                else:
+                    result_element.write(f"Too high, try again. Multiplied by two: {user_guess * 2}")
+            else:
+                result_element.write("Please enter a number.")
+
+        # Expose the function globally so the button can call it
+        from js import window
+        window.guessNumber = guessNumber
+    </py-script>
+</body>
+</html>
