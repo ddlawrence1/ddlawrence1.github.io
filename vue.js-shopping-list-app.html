@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vue.js Shopping List</title>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+        <style>
+            body{
+                font-family: Arial, Helvetica, sans-serif;
+                background-color: #f9f9f9;
+                margin: 0;
+                padding: 20px;
+                display: flex;
+                justify-content: center;
+            }
+
+            #app{
+                background: white;
+                max-width: 400px;
+                width: 100%;
+                padding: 20px;
+                border-radius: 12px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+h1{
+    text-align: center;
+    color: #333;
+}
+
+input{
+    width: 70%;
+    padding: 8px;
+    margin-right: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+}
+button{
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover{
+    background: #0056b3;
+}
+ul{
+    list-style: none;
+    padding: 0;
+}
+li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.bought{
+    text-decoration: line-through;
+    color: gray;
+}
+
+.filter-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.active-filter{
+    background:#0056b3 !important;
+}
+</style>
+
+
+    </head>
+  
+    <body>
+        <div id="app">
+            <h1>{{title}}</h1>
+
+            <div style="margin-bottom: 12px;">
+                <input
+                type="text"
+                v-model.trim="newItem"
+                placeholder="Add a new item"
+                @keyup.enter="addItem"
+                >
+                <button @click="addItem">Add</button>
+            </div>
+
+            <p v-if="items.length === 0">Your list is empty. Start adding item!</p>
+
+            <ul v-else>
+                <li v-for="(item,index) in filteredItems" :key="index">
+                    <span
+                    :class="{bought: item.bought}"
+                    @click="toggleBought(item)"
+                    style="cursor: pointer;"
+                    >
+                    {{item.name}}
+                </span>
+                <button @click="removeItem(index)" style="background:#dc3545;">X</button>
+                </li>
+            </ul>
+
+            <p v-if="items.length > 0">Total items: {{totalItems}} </p>
+
+            <div class="filter-buttons" v-if="items.length > 0">
+                <button
+                :class="{'active-filter': filter === 'all'}"
+                @click="filter = 'all'"
+                >All</button>
+                <button
+                :class="{'active-filter': filter === 'active'}"
+                @click="filter = 'active'"
+                >Active</button>
+                <button
+                :class="{'active-filter': filter === 'bought'}"
+                @click="filter = 'bought'"
+                >Bought</button>
+            </div>
+        </div>
+
+        <script>
+            const{createApp} = Vue;
+
+            createApp({
+                data(){
+                    return{
+                        title:"My Shopping List",
+                        newItem:"",
+                        items:[],
+                        filter:"all"
+                    }
+                },
+
+
+                computed:{
+                    totalItems(){
+                        return this.items.length;
+                    },
+
+
+                    filteredItems(){
+                        switch(this.filter){
+                            case "bought":
+                                return this.items.filter(item => item.bought);
+                                case "active":
+                                    return this.items.filter(item => !item.bought);
+                                    default:
+                                        return this.items;
+                        }
+                    }
+                },
+
+                methods:{
+                    addItem(){
+                        if(!this.newItem) return;
+                        this.items.push({name: this.newItem, bought: false});
+                        this.newItem = "";
+                    },
+
+                    toggleBought(item){
+                        item.bought = !item.bought;
+                    },
+
+                    removeItem(index){
+                        this.items.splice(index, 1);
+
+                    }
+                }  
+                
+            }).mount("#app");
+        </script>
+    </body>
+
+</html>
